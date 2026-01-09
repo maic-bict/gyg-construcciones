@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>G y G Construcciones y Remodelaciones | Calidad y Profesionalismo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #ff6b35;
+            --secondary: #004e89;
+            --dark: #1a1a2e;
+            --light: #f5f5f5;
+            --accent: #ffa500;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--dark) 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, rgba(0,78,137,0.9) 0%, rgba(26,26,46,0.9) 100%), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23cccccc" width="1200" height="600"/><path fill="%23999999" d="M0 300L50 320L100 300L150 310L200 290L250 305L300 295L350 315L400 300L450 310L500 295L550 305L600 300L650 315L700 295L750 310L800 300L850 305L900 295L950 310L1000 300L1050 315L1100 295L1150 310L1200 300V600H0Z"/></svg>');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 150px 2rem 100px;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s 0.2s backwards;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s 0.4s backwards;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #ff8555;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255,107,53,0.3);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--secondary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--light);
+            transform: translateY(-2px);
+        }
+
+        /* Sections */
+        section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 3rem;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: var(--primary);
+        }
+
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .service-card h3 {
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text {
+            background: var(--light);
+            padding: 2rem;
+            border-radius: 10px;
+        }
+
+        .about-text h3 {
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+
+        /* Quote Form */
+        .quote-form {
+            background: var(--light);
+            padding: 3rem;
+            border-radius: 10px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--secondary);
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        /* Chat Bot */
+        .chat-button {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(255,107,53,0.4);
+            transition: all 0.3s;
+            z-index: 999;
+        }
+
+        .chat-button:hover {
+            transform: scale(1.1);
+        }
+
+        .chat-button span {
+            color: white;
+            font-size: 2rem;
+        }
+
+        .chat-window {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            width: 350px;
+            height: 500px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            display: none;
+            flex-direction: column;
+            z-index: 999;
+        }
+
+        .chat-window.active {
+            display: flex;
+        }
+
+        .chat-header {
+            background: var(--secondary);
+            color: white;
+            padding: 1rem;
+            border-radius: 10px 10px 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .chat-close {
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+
+        .chat-messages {
+            flex: 1;
+            padding: 1rem;
+            overflow-y: auto;
+        }
+
+        .chat-message {
+            margin-bottom: 1rem;
+            padding: 0.8rem;
+            border-radius: 10px;
+            max-width: 80%;
+        }
+
+        .chat-message.bot {
+            background: var(--light);
+            align-self: flex-start;
+        }
+
+        .chat-message.user {
+            background: var(--primary);
+            color: white;
+            align-self: flex-end;
+            margin-left: auto;
+        }
+
+        .chat-input {
+            display: flex;
+            padding: 1rem;
+            border-top: 1px solid #ddd;
+        }
+
+        .chat-input input {
+            flex: 1;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-right: 0.5rem;
+        }
+
+        /* Contact */
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .contact-item {
+            background: var(--light);
+            padding: 2rem;
+            border-radius: 10px;
+        }
+
+        .contact-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .chat-window {
+                width: 90%;
+                right: 5%;
+            }
+        }
+
+        #quoteResult {
+            margin-top: 2rem;
+            padding: 2rem;
+            background: white;
+            border-radius: 10px;
+            border-left: 5px solid var(--primary);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">🏗️ G y G Construcciones</div>
+            <ul class="nav-links">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#nosotros">Nosotros</a></li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#cotizacion">Cotización</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="inicio" class="hero">
+        <h1>Construimos tus Proyectos con Calidad y Profesionalismo</h1>
+        <p>Más de 10 años de experiencia en construcción, remodelaciones y obras civiles</p>
+        <div class="cta-buttons">
+            <a href="#cotizacion" class="btn btn-primary">Solicitar Cotización</a>
+            <a href="#contacto" class="btn btn-secondary">Contactar Asesor</a>
+        </div>
+    </section>
+
+    <section id="nosotros">
+        <h2 class="section-title">Quiénes Somos</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <h3>🏢 Nuestra Empresa</h3>
+                <p>G y G Construcciones y Remodelaciones es una empresa especializada en servicios de construcción, remodelación y obras civiles. Contamos con un equipo técnico altamente calificado liderado por el Ingeniero Estiven García, con más de 10 años de experiencia en el sector.</p>
+                <p style="margin-top: 1rem;">Nos caracterizamos por nuestro compromiso con la calidad, el cumplimiento de cronogramas y la seguridad en cada proyecto que ejecutamos.</p>
+            </div>
+            <div class="about-text">
+                <h3>🎯 Misión</h3>
+                <p>Brindar soluciones constructivas de alta calidad, cumpliendo con los más altos estándares técnicos y de seguridad, superando las expectativas de nuestros clientes.</p>
+                <h3 style="margin-top: 1.5rem;">👁️ Visión</h3>
+                <p>Ser reconocidos como la empresa líder en construcción y remodelaciones en la región, destacándonos por nuestra innovación, compromiso y excelencia operativa.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="servicios">
+        <h2 class="section-title">Nuestros Servicios</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">🏠</div>
+                <h3>Construcción de Viviendas</h3>
+                <p>Construcción completa de casas y proyectos residenciales con materiales de primera calidad.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🏗️</div>
+                <h3>Estructuras en Concreto</h3>
+                <p>Construcción de estructuras en concreto reforzado, cimentaciones y obras de infraestructura.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">⚙️</div>
+                <h3>Estructuras Metálicas</h3>
+                <p>Diseño y construcción de estructuras metálicas para usos residenciales, comerciales e industriales.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🔨</div>
+                <h3>Remodelaciones</h3>
+                <p>Remodelación integral de viviendas, oficinas y locales comerciales.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">✨</div>
+                <h3>Acabados Arquitectónicos</h3>
+                <p>Instalación de pisos, enchapes, pintura, cielos rasos y todo tipo de acabados.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🏘️</div>
+                <h3>Cubiertas y Techos</h3>
+                <p>Construcción e impermeabilización de cubiertas, terrazas y techos.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🔧</div>
+                <h3>Mantenimiento Locativo</h3>
+                <p>Servicios de mantenimiento preventivo y correctivo para edificaciones.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">📋</div>
+                <h3>Presupuestos y APU</h3>
+                <p>Elaboración de presupuestos detallados, análisis de precios unitarios y memorias de cálculo.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">👷</div>
+                <h3>Supervisión Técnica</h3>
+                <p>Asesoría y supervisión técnica de obras para garantizar calidad y cumplimiento normativo.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="cotizacion">
+        <h2 class="section-title">Sistema de Cotización</h2>
+        <div class="quote-form">
+            <form id="quoteFormElement">
+                <div class="form-group">
+                    <label>Tipo de Proyecto:</label>
+                    <select id="projectType" required>
+                        <option value="">Seleccione...</option>
+                        <option value="construccion">Construcción Nueva</option>
+                        <option value="remodelacion">Remodelación</option>
+                        <option value="estructura">Estructura en Concreto</option>
+                        <option value="metalica">Estructura Metálica</option>
+                        <option value="acabados">Acabados</option>
+                        <option value="mantenimiento">Mantenimiento</option>
+                        <option value="otro">Otro</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Área Aproximada (m²):</label>
+                    <input type="number" id="area" placeholder="Ej: 150" required>
+                </div>
+                <div class="form-group">
+                    <label>Nombre Completo:</label>
+                    <input type="text" id="name" placeholder="Su nombre" required>
+                </div>
+                <div class="form-group">
+                    <label>Teléfono/WhatsApp:</label>
+                    <input type="tel" id="phone" placeholder="3001234567" required>
+                </div>
+                <div class="form-group">
+                    <label>Correo Electrónico:</label>
+                    <input type="email" id="email" placeholder="correo@ejemplo.com" required>
+                </div>
+                <div class="form-group">
+                    <label>Descripción del Proyecto:</label>
+                    <textarea id="description" rows="4" placeholder="Cuéntenos sobre su proyecto..." required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Generar Cotización</button>
+            </form>
+            <div id="quoteResult" style="display: none;"></div>
+        </div>
+    </section>
+
+    <section id="contacto">
+        <h2 class="section-title">Contacto</h2>
+        <div class="contact-info">
+            <div class="contact-item">
+                <div class="contact-icon">📱</div>
+                <h3>WhatsApp</h3>
+                <p>+57 320 896 7267</p>
+                <a href="https://wa.me/573208967267" class="btn btn-primary" style="margin-top: 1rem;">Chatear Ahora</a>
+            </div>
+            <div class="contact-item">
+                <div class="contact-icon">📧</div>
+                <h3>Email</h3>
+                <p>garciamaicolrojas28@gmail.com</p>
+            </div>
+            <div class="contact-item">
+                <div class="contact-icon">📍</div>
+                <h3>Ubicación</h3>
+                <p>Girardot, Cundinamarca</p>
+                <p><strong>Cobertura: Todo Colombia</strong></p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 G y G Construcciones y Remodelaciones | Ingeniería y Construcción Profesional</p>
+        <p>Diseñado con calidad y profesionalismo</p>
+    </footer>
+
+    <!-- Chat Button -->
+    <div class="chat-button" onclick="toggleChat()">
+        <span>💬</span>
+    </div>
+
+    <!-- Chat Window -->
+    <div class="chat-window" id="chatWindow">
+        <div class="chat-header">
+            <span>🤖 Asistente Virtual G y G</span>
+            <span class="chat-close" onclick="toggleChat()">✕</span>
+        </div>
+        <div class="chat-messages" id="chatMessages">
+            <div class="chat-message bot">
+                ¡Hola! Soy el asistente virtual de G y G Construcciones. ¿En qué puedo ayudarte hoy?
+                <br><br>
+                Puedo ayudarte con:
+                <br>• Información sobre nuestros servicios
+                <br>• Proceso de cotización
+                <br>• Contacto con un asesor
+                <br>• Preguntas frecuentes
+            </div>
+        </div>
+        <div class="chat-input">
+            <input type="text" id="chatInput" placeholder="Escribe tu mensaje...">
+            <button class="btn btn-primary" onclick="sendMessage()">Enviar</button>
+        </div>
+    </div>
+
+    <script>
+        // Toggle Chat
+        function toggleChat() {
+            const chatWindow = document.getElementById('chatWindow');
+            chatWindow.classList.toggle('active');
+        }
+
+        // Chat Bot
+        function sendMessage() {
+            const input = document.getElementById('chatInput');
+            const message = input.value.trim();
+            if (!message) return;
+
+            const messagesDiv = document.getElementById('chatMessages');
+            
+            // User message
+            const userMsg = document.createElement('div');
+            userMsg.className = 'chat-message user';
+            userMsg.textContent = message;
+            messagesDiv.appendChild(userMsg);
+
+            input.value = '';
+
+            // Bot response
+            setTimeout(() => {
+                const botMsg = document.createElement('div');
+                botMsg.className = 'chat-message bot';
+                botMsg.innerHTML = getBotResponse(message.toLowerCase());
+                messagesDiv.appendChild(botMsg);
+                messagesDiv.scrollTop = messagesDiv.scrollHeight;
+            }, 1000);
+        }
+
+        function getBotResponse(message) {
+            if (message.includes('servicio') || message.includes('que hacen')) {
+                return 'Ofrecemos construcción de viviendas, estructuras en concreto y metálicas, remodelaciones, acabados, cubiertas, mantenimiento y supervisión técnica. ¿Te interesa alguno en particular?';
+            } else if (message.includes('cotiza') || message.includes('precio') || message.includes('costo')) {
+                return 'Para una cotización precisa, por favor completa nuestro formulario en la sección "Cotización" o contacta directamente a nuestro asesor por WhatsApp: +57 320 896 7267';
+            } else if (message.includes('contacto') || message.includes('telefono') || message.includes('whatsapp')) {
+                return 'Puedes contactarnos por:<br>📱 WhatsApp: +57 320 896 7267<br>📧 Email: garciamaicolrojas28@gmail.com<br>📍 Ubicación: Girardot, Cundinamarca (Cobertura nacional)<br>¿Prefieres que un asesor te contacte?';
+            } else if (message.includes('tiempo') || message.includes('cuanto demora')) {
+                return 'Los tiempos dependen del tipo y tamaño del proyecto. Generalmente respondemos cotizaciones en 24-48 horas. ¿Quieres más información sobre algún proyecto específico?';
+            } else if (message.includes('experiencia') || message.includes('años')) {
+                return 'Contamos con más de 10 años de experiencia en el sector de la construcción, liderados por el Ingeniero Estiven García. Trabajamos con clientes residenciales, comerciales y empresariales en todo Colombia.';
+            } else if (message.includes('donde') || message.includes('ubicacion') || message.includes('cobertura')) {
+                return 'Estamos ubicados en Girardot, Cundinamarca, pero tenemos cobertura en todo Colombia. ¿En qué ciudad necesitas nuestros servicios?';
+            } else {
+                return 'Gracias por tu mensaje. Para una atención más personalizada, te recomiendo:<br>1. Completar el formulario de cotización<br>2. Contactar por WhatsApp: +57 320 896 7267<br>3. Enviar un email: garciamaicolrojas28@gmail.com<br><br>¿Hay algo más en lo que pueda ayudarte?';
+            }
+        }
+
+        // Quote Form
+        document.getElementById('quoteFormElement').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const projectType = document.getElementById('projectType').value;
+            const area = parseFloat(document.getElementById('area').value);
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const email = document.getElementById('email').value;
+            const description = document.getElementById('description').value;
+
+            // Precio estimado por m² según tipo de proyecto
+            const pricePerM2 = {
+                'construccion': 1800000,
+                'remodelacion': 950000,
+                'estructura': 850000,
+                'metalica': 1200000,
+                'acabados': 600000,
+                'mantenimiento': 450000,
+                'otro': 800000
+            };
+
+            const basePrice = area * pricePerM2[projectType];
+            const minPrice = basePrice * 0.85;
+            const maxPrice = basePrice * 1.15;
+
+            // Crear mensaje para WhatsApp con toda la información
+            const projectTypeName = {
+                'construccion': 'Construcción Nueva',
+                'remodelacion': 'Remodelación',
+                'estructura': 'Estructura en Concreto',
+                'metalica': 'Estructura Metálica',
+                'acabados': 'Acabados',
+                'mantenimiento': 'Mantenimiento',
+                'otro': 'Otro'
+            };
+
+            const whatsappMessage = encodeURIComponent(
+                `🏗️ *SOLICITUD DE COTIZACIÓN*\n` +
+                `━━━━━━━━━━━━━━━━━━━━\n\n` +
+                `👤 *DATOS DEL CLIENTE*\n` +
+                `Nombre: ${name}\n` +
+                `Teléfono: ${phone}\n` +
+                `Email: ${email}\n\n` +
+                `📋 *DETALLES DEL PROYECTO*\n` +
+                `Tipo: ${projectTypeName[projectType]}\n` +
+                `Área: ${area} m²\n` +
+                `Descripción: ${description}\n\n` +
+                `💰 *ESTIMADO PRELIMINAR*\n` +
+                `Rango: ${minPrice.toLocaleString('es-CO')} - ${maxPrice.toLocaleString('es-CO')} COP\n\n` +
+                `━━━━━━━━━━━━━━━━━━━━\n` +
+                `Solicito cotización detallada para este proyecto.`
+            );
+
+            const resultDiv = document.getElementById('quoteResult');
+            resultDiv.style.display = 'block';
+            resultDiv.innerHTML = `
+                <h3 style="color: var(--secondary); margin-bottom: 1rem;">✅ Cotización Preliminar Generada</h3>
+                <p><strong>Cliente:</strong> ${name}</p>
+                <p><strong>Proyecto:</strong> ${projectTypeName[projectType]}</p>
+                <p><strong>Área:</strong> ${area} m²</p>
+                <p style="margin-top: 1.5rem;"><strong>Rango de Inversión Estimado:</strong></p>
+                <p style="font-size: 1.3rem; color: var(--primary); font-weight: bold;">
+                    ${minPrice.toLocaleString('es-CO')} - ${maxPrice.toLocaleString('es-CO')} COP
+                </p>
+                <p style="margin-top: 1rem; color: #666; font-size: 0.9rem;">
+                    * Este es un estimado preliminar. Para una cotización detallada, nuestro equipo técnico se pondrá en contacto contigo en las próximas 24 horas.
+                </p>
+                <div style="margin-top: 1.5rem; padding: 1rem; background: var(--light); border-radius: 5px;">
+                    <p><strong>📋 Próximos pasos:</strong></p>
+                    <p>1. Revisaremos tu solicitud</p>
+                    <p>2. Te contactaremos al ${phone}</p>
+                    <p>3. Agendaremos una visita técnica</p>
+                    <p>4. Entregaremos cotización detallada</p>
+                </div>
+                <a href="https://wa.me/573208967267?text=${whatsappMessage}" 
+                   class="btn btn-primary" style="margin-top: 1rem; width: 100%; text-align: center;">
+                    📱 Enviar Cotización por WhatsApp
+                </a>
+            `;
+
+            resultDiv.scrollIntoView({ behavior: 'smooth' });
+        });
+
+        // Chat input enter key
+        document.getElementById('chatInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
